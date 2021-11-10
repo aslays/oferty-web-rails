@@ -1,0 +1,49 @@
+<h1>Nuevo Usuario</h1>
+<%= form_for(@usuario) do |f| %>
+
+  <% if @usuario.errors.any? %>
+
+    <div id="error_explanation">
+      <h2><%= pluralize(@usuario.errors.count, "error") %> prohibited this usuario from being saved:</h2>
+
+      <ul>
+      <% @usuario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if current_user.rol == 1 %>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :rol %><br>
+    <%= f.number_field :rol, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :ciudad_id %><br>
+    <%= f.collection_select :ciudad_id, Ciudad.all, :id, :ciudad, prompt: true, class: "form-control"  %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.text_field :password, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.text_field :password_confirmation, class: "form-control" %>
+  </div>
+  <div class="boton-New-ofert">
+  <div class="actions">
+    <%= f.submit "Listo!", class: "btn btn-success"  %>
+  </div>
+  </div>
+
+  <% else %>
+        <p>Debes iniciar sesión <%=link_to 'Login', usuario_sessions_new_path %></p>
+  <% end %> 
+
+<% end %>

@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<% if current_user.id==@ofertum.usuario_id || current_user.rol==1 %>
+
+<div class="show">
+	<p  class= "bg-primary" >
+	  <strong>Titulo:</strong>
+	  <%= @ofertum.titulo  %>
+	</p>
+
+	<p  class= "bg-success">
+	  <strong>Descripcion:</strong>
+	  <%= @ofertum.descripcion %>
+	</p>
+
+	<p  class= "bg-primary">
+	  <strong>Precio:</strong>
+	  <%= @ofertum.precio %>
+	</p>
+
+	<p  class= "bg-success">
+	  <strong>Forma de pago:</strong>
+	  <%= @ofertum.forma_pago %>
+	</p>
+
+	
+	<p  class="bg-primary">
+		
+	  <%= image_tag @ofertum.photo_path, class: "img-responsive" %>
+	  	
+	</p>
+	
+
+<div class="boton-New-ofert">
+<%= link_to 'Editar', edit_ofertum_path(@ofertum), class: "btn btn-warning" %> 
+<%= link_to 'Atras', oferta_path, class: "btn btn-success" %>
+
+<% else %>
+        <p>Debes iniciar sesion <%=link_to 'Login', usuario_sessions_new_path %></p>
+<% end %> 
+
+</div>
+</div>

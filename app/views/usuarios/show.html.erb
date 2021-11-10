@@ -1,0 +1,27 @@
+<% if current_user.rol==1 %>
+
+<p id="notice"><%= notice %></p>
+
+<div class="show">
+<p class= "bg-primary">
+  <strong>Email:</strong>
+  <%= @usuario.email %>
+</p>
+<p class= "bg-primary">
+  <strong>Ciudad:</strong>
+  <%= @usuario.ciudad_id %>
+</p>
+<p class= "bg-primary">
+  <strong>Rol:</strong>
+  <%= @usuario.rol %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_usuario_path(@usuario), class: "btn btn-warning" %> 
+<%= link_to 'Volver', usuarios_path, class: "btn btn-success" %>
+
+</div>
+<% else %>
+        <p>Debes iniciar sesion <%=link_to 'Login', usuario_sessions_new_path %></p>
+<% end %> 

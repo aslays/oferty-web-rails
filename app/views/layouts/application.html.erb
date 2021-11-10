@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Oferty</title>
+  <%= stylesheet_link_tag   "application.css" %>
+  <%= stylesheet_link_tag   "bootstrap.css" %>
+  <%= stylesheet_link_tag   "signin.css" %>
+  <!--<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>-->
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  
+
+  <%= stylesheet_link_tag "application", "http://fonts.googleapis.com/css?family=Exo:100,200,300,400,500,600,700,800,900,100italic,200italic,300italic,400italic,500italic,600italic,700italic,800italic,900italic' rel='stylesheet' type='text/css" %>
+
+  <%= stylesheet_link_tag "application", "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet"  %>
+
+</head>
+<body >
+	<div class="header">
+		<div class="container">
+			<div class="logo">
+				<a href="/"><img src= "/assets/logo2.png" alt=""></a>
+			</div>
+			<div class="navigation">
+				<span class="menu"></span>
+				<ul class="navig">
+					
+					<li><%=link_to 'INICIO', root_path %> </li> 
+					
+					<% if current_user %>
+					<li><%=link_to 'OFERTAS', oferta_path %> </li>
+					<li><%=link_to "CERRAR SESION #{current_user.email}", usuario_sessions_destroy_path %></li>
+					
+					<% else %>
+					<li><%=link_to 'LOGIN', usuario_sessions_new_path %></li>
+					<% end %>	
+				
+				</ul>	
+			</div>
+
+			<script>
+				$("span.menu").click(function(){
+					$(" ul.navig").slideToggle("slow" , function(){
+					});
+				});
+		 	</script>
+
+		</div>		
+	</div>	
+	
+	
+<%= yield %>
+
+</body>
+</html>

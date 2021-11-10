@@ -1,0 +1,15 @@
+<% if current_user.rol==1 %>
+
+<p id="notice"><%= notice %></p>
+<div class="show">
+<p class= "bg-primary">
+  <strong>Ciudad:</strong>
+  <%= @ciudad.ciudad %>
+</p>
+
+<%= link_to 'Editar', edit_ciudad_path(@ciudad), class: "btn btn-warning" %> 
+<%= link_to 'Volver', ciudads_path, class: "btn btn-success" %>
+</div>
+<% else %>
+        <p>Debes iniciar sesion <%=link_to 'Login', usuario_sessions_new_path %></p>
+<% end %> 

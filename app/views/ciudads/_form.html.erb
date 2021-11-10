@@ -1,0 +1,30 @@
+<h1>Nueva Ciudad</h1>
+
+<%= form_for(@ciudad) do |f| %>
+  <% if @ciudad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ciudad.errors.count, "error") %> prohibited this ciudad from being saved:</h2>
+      <ul>
+      <% @ciudad.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if current_user.rol == 1 %>
+  
+  <div class="field">
+    <%= f.label :ciudad %><br>
+    <%= f.text_field :ciudad, class: "form-control" %>
+  </div>
+  <div class="boton-New-ofert">
+  <div class="actions">
+    <%= f.submit "Listo!", class: "btn btn-success" %>
+  </div>
+  </div>
+  <% else %>
+        <p>Debes iniciar sesión <%=link_to 'Login', usuario_sessions_new_path %></p>
+<% end %> 
+<% end %>
+

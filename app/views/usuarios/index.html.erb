@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<% if current_user.rol == 1 %>
+
+<div class="contenedor-tabla">
+<div class="table-responsive">
+<h1>Usuarios</h1>
+
+<table class="table table-condensed">
+  <thead>
+   <tr class="info">
+      <th>Email</th>
+      <th>Ciudad</th>
+      <th>Rol</th>
+      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @usuarios.each do |usuario| %>
+      <tr class="active">
+        <td><%= usuario.email %></td>
+        <td><%= usuario.ciudad_id %></td>
+        <td><%= usuario.rol %></td>
+        
+        <td><%= link_to 'Mosrar', usuario, class: "btn btn-primary" %></td>
+        <td><%= link_to 'Editar', edit_usuario_path(usuario), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Borrar', usuario, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Usuario', new_usuario_path, class: "btn btn-success" %>
+
+<% else %>
+        <p>Debes iniciar sesión <%=link_to 'Login', usuario_sessions_new_path %></p>
+<% end %> 
+
+</div>
+</div>
